@@ -1,0 +1,244 @@
+ /* page 1 */
+* {
+   margin: 0;
+   padding: 0;
+}
+
+ /* using tags selector */
+ h1 {
+    font-family: 'Bebas Neue', cursive;
+    font-weight: bold;
+    letter-spacing: 3px;
+    
+ }
+  
+ h2 {
+    font-family: 'Bebas Neue', cursive;
+    font-weight: bold;
+    font-size: 36px;
+ }
+  
+ h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 24px;
+ }
+
+ .main-class {
+    color: #fff;
+    background-image: url(assets/main-bg.jpg);
+    background-size: cover;
+    object-fit: contain;
+    height: 100vh;
+    /* text-align: center; */
+ }
+ 
+ .navbar {
+    background: rgba(0, 0, 0, 0.5);
+ }
+ 
+ .navbar button {
+    background-color: #fff;
+ }
+
+ /* Logo */
+ .navbar-brand {
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: bold;
+    overflow: hidden;
+    letter-spacing: 0.1em;
+    left: 80px;
+    padding-bottom: .30rem;
+    color: #fff !important;
+ }
+
+
+ .nav-link {
+    color: white !important;
+}
+
+ /* utilities */
+
+
+ /* content main */
+
+ main {
+    color: white;
+    text-align: center;
+    margin-top: 20vh;
+
+ }
+
+ main h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    letter-spacing: 10px;
+    /* padding: 20px 0; */
+    height: 100px;
+    margin-bottom: 20px;
+ }
+
+ main h3 {
+    letter-spacing: 3px;
+    margin-bottom: 45px;
+    height: 50px;
+ }
+ 
+ .scroll-down-button {
+    position: absolute;
+    bottom: 0px;
+    left: 47%;
+ }
+  
+ .scroll-down-button a {
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 22px;
+    text-align: justify;
+    margin-bottom: 50px;
+    letter-spacing: 3px;
+ }
+
+ a {
+    color: #FFFFFF !important;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 33px;
+  }
+
+ .scroll-down {
+    margin-top: -100px;
+ }
+
+/* Page 2 */
+
+.Page-2 {
+   background-image: url(assets/the-games-bg.jpg);
+   background-size: cover;
+   object-fit: contain;
+   height: 100vh;
+   position: relative;
+ }
+ 
+ .carousel-inner img {
+    position: flex;
+    width: 320px;
+    height: 240px;
+ }
+ 
+ /* .scissors {
+   position: relative;
+   margin-top: -1px;
+   top: 15%;
+   left: 30px;
+ } */
+ 
+ 
+ .about-gallery-text {
+    position: relative;
+    top: 100px;
+    left: -10px;
+ }
+
+ .scissors ul li {
+   list-style: none;
+   letter-spacing: 3px;
+   padding: 5px;
+}
+
+ .carousel {
+    position: relative;
+    top: 300px;
+    right: 20%;
+
+
+ }
+
+ .carousel-control-prev img {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    margin-right: 80px;
+ }
+
+ .carousel-control-next img {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    margin-left: 80px;
+}
+
+
+
+
+ /* Dekstop version */
+ @media (min-width: 992px) {
+    
+    .nav-link {
+        font-size: 12px;
+        text-transform: uppercase;
+        margin-right: 25px;        
+    }
+
+    .nav-link:hover::after {
+        content: '';
+        display: block;
+        border-bottom: 3px solid #0b63dc;
+        width: 50%;
+        margin: auto;
+        padding-bottom: 5px;
+        margin-bottom: -8px;
+    }
+
+    /* menu navigasi */
+    .navbar-nav {
+        margin-left: 220px;
+        text-transform: uppercase;
+        font-family: 'Open Sans';
+        font-weight: bold;
+        line-height: 16px;
+        font-size: 12px;
+        text-align: right;
+        letter-spacing: 0.1em;
+    }
+
+    main h1 {
+      font-size: 80px;
+   }
+
+   /* Page 2 */
+
+   .slide {
+      position: flex;
+      
+   }
+
+   .about-gallery-text {
+      left: -15px;
+   }
+
+   .carousel {
+      position: relative;
+      top: 150px;
+      right: 0px;
+   }
+
+   .carousel-inner img {
+      width: 600px;
+      height: 400px;
+   }
+
+   .carousel-control-prev img {
+      margin-right: 120px;
+   }
+  
+   .carousel-control-next img {
+      margin-left: 120px;
+  } 
+
+
+ }

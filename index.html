@@ -1,13 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1> Tester Binar Website</h1>
-    <p>Alan Hendri Nuari</p>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <title>Landing Page by Alan</title>
+
+    <!-- Link Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+
+  </head>
+  <body>
+    <div class="main-class">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="#">Logo</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"> </span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" href="#">Work</a>
+              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" href="#">About me</a>
+            </div>
+            <div class="navbar-nav ms-auto">
+              <a class="nav-link" href="#">Sign up</a>
+              <a class="nav-link" href="#">Login</a>  
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- Akhir Navbar -->
+
+        <div class="container">
+          <main>
+            <h1>PLAY TRADITIONAL GAME</h1>
+            <h3 class="lead mb-5">Experience new traditional game play</h3>
+            <button type="button" class="btn btn-warning" style="text-transform: uppercase; font-weight: bold; padding-left: 50px; padding-right: 50px;" >play now</button>
+          </main>
+          <section class="scroll-down-button text-center display-8">
+            <a href="#" class="d-block text-decoration-none text-uppercase">the story</a>
+            <img class="scroll-down" src="assets/scroll-down.svg" alt="scroll=down-button">
+          </section>
+        </div>
+    </div>
+
+    <!-- Page 2 -->
+
+    <div class="Page-2">
+      <div class="scissors d-flex justify-content-center" style="color: white;">
+        <div class="about-gallery-text">
+            <ul>
+              <li style="text-transform: capitalize; font-size: 16px; sans-serif;">what's so special?</li>
+              <li style="text-transform: uppercase; font: 3em sans-serif">the games</li>
+            </ul>          
+        </div>
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="assets/rockpaperstrategy-1600.jpg" alt="...">
+            </div>
+            <div class="carousel-item" >
+              <img src="assets/rockpaperstrategy-1600.jpg" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="assets/rockpaperstrategy-1600.jpg" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <img src="assets/switch-left.svg" alt="">
+            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <img src="assets/switch-right.svg" alt="">
+            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  
+
+      
+   
+
+
+
+
+
+
+
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </body>
 </html>
