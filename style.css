@@ -33,10 +33,51 @@ a.nav-link{
 }
 
 /* Style Gameplay Options, Game Feature, System Req, Top Score, & Footer*/
+/* .slide input {
+  display: none;
+}
+
+.navigation-manual {
+  position: absolute;
+  width: 800px;
+  margin-top: -40px;
+  display: flex;
+  justify-content: center;
+}
+
+.manual-btn {
+  border: 2px solid white;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.manual-btn:not(:last-child){
+  margin-right: 40px;
+}
+
+.manual-btn:hover{
+  background: white;
+}
+
+#radio1:checked ~ .number-1{
+
+}
+
+#radio2:checked ~ .active{
+  margin-left: -20%;
+}
+
+#radio3:checked ~ .active{
+  margin-left: -40%;
+} */
+
 .gameplay-options{
    margin-top: -1%;
    z-index: 1;
 }
+
 
 .game-feature{
    margin-top: -7%;
@@ -48,7 +89,7 @@ a.nav-link{
 
 .text-game-1, 
 .text-game-2{
-    font-family: 'Arial';
+    font-family: 'Open Sans', sans-serif;
 }
 
 .text-game-1{
@@ -67,9 +108,38 @@ a.nav-link{
 }
 
 .text-game-4{
-    font-family: 'Arial';
+    font-family: 'Open Sans', sans-serif;
     line-height: 16px;
     letter-spacing: 0.14em;
+}
+
+.system-req{
+    margin-top: -1%;
+}
+
+.system-req-header{
+    top: 15%;
+}
+
+.system-req-container{
+    top: 25%;
+}
+
+.top-score-card{
+    top: -3%; 
+    left: 25%;
+}
+
+.footer{
+    margin-top: -1%;
+}
+
+.footer-container{
+    bottom: 5%;
+}
+
+hr {
+    height: 2px;
 }
 
 @media screen and (min-width: 576px) and (max-width: 767px) {
@@ -141,6 +211,14 @@ a.nav-link{
    }
    .carousel-control-next-icon {
       margin-left: 160px;
+   }
+   .top-score-card{
+      top: -3%; 
+      left: 25%;
+   }
+   .top-score-card img {
+      width: 68px;
+      height: 68px;
    }
 
 
