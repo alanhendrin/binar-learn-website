@@ -32,52 +32,10 @@ a.nav-link{
    font-size: 0.8rem;
 }
 
-/* Style Gameplay Options, Game Feature, System Req, Top Score, & Footer*/
-/* .slide input {
-  display: none;
-}
-
-.navigation-manual {
-  position: absolute;
-  width: 800px;
-  margin-top: -40px;
-  display: flex;
-  justify-content: center;
-}
-
-.manual-btn {
-  border: 2px solid white;
-  padding: 5px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 1s;
-}
-
-.manual-btn:not(:last-child){
-  margin-right: 40px;
-}
-
-.manual-btn:hover{
-  background: white;
-}
-
-#radio1:checked ~ .number-1{
-
-}
-
-#radio2:checked ~ .active{
-  margin-left: -20%;
-}
-
-#radio3:checked ~ .active{
-  margin-left: -40%;
-} */
-
 .gameplay-options{
    margin-top: -1%;
    z-index: 1;
 }
-
 
 .game-feature{
    margin-top: -7%;
