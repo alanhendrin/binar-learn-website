@@ -53,7 +53,7 @@ class Aturan {
         console.log(`Keterangan: Tidak ada yang mendapatkan poin, Total Score >> Player: ${this.#sp}, Com: ${this.#sc}`)
       
       } else if(hasilPP === 'batu') {
-        if(hasilPC === 'gunting') {
+        if (hasilPC === 'gunting') {
           this.textHasilPermainan1.style.display = 'block'
           this.textHasilPermainan1.innerText = 'PLAYER'
           this.textHasilPermainan2.innerText = 'Win'
@@ -77,7 +77,7 @@ class Aturan {
           console.log(`Keterangan: Computer mendapatkan 1 poin. Total Score >> Player: ${this.#sp}, Com: ${this.#sc}`)
         }
       } else if (hasilPP == 'gunting') {
-        if(hasilPC === 'batu') {
+        if (hasilPC === 'batu') {
           this.textHasilPermainan1.style.display = 'block'
           this.textHasilPermainan1.innerText = 'COM'
           this.textHasilPermainan2.innerText = 'Win'
@@ -101,7 +101,7 @@ class Aturan {
           console.log(`Keterangan: Player mendapatkan 1 poin. Total Score >> Player: ${this.#sp}, Com: ${this.#sc}`)
         }
       } else if (hasilPP === 'kertas') {
-        if(hasilPC === 'batu') {
+        if (hasilPC === 'batu') {
           this.textHasilPermainan1.style.display = 'block'
           this.textHasilPermainan1.innerText = 'PLAYER'
           this.textHasilPermainan2.innerText = 'Win'
