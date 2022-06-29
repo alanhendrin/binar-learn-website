@@ -4,39 +4,24 @@ const port = 7000
 const morgan = require('morgan')
 
 
-// Middleware
+// middleware information
 app.use(morgan('dev'))
-app.use(express.static('public'))
-app.set('view engine', 'ejs')
 
+// middleware untuk get assets in server
+app.use(express.static('public'))
+
+// middleware untuk convert data dare FE ke BE
+app.use(express.json()) // terima data berupa json
+app.use(express.urlencoded({ extended: true })) // terima data berupa form
+
+// middleware untuk view / tampilan
+app.set('view engine', 'ejs')
 app.listen(port, function () { console.log(`Server is running in port : ${port}`) })
 
+const Routes = require('./routes/route')
+app.use(Routes)
 
-// Routing
-// app.get('/home', function (request, response) {
-//   response.sendFile(__dirname + '/views/index.html')
-// })
 
-// app.get('/game', function (request, response) {
-//   response.sendFile(__dirname + '/views/game-b-g-k.html')
-// })
-
-app.get('/home', function (request, response) {
-  response.render('index') // untuk ejs
-})
-
-app.get('/game-bgk', function (request, response) {
-  response.render('game-bgk') // untuk ejs
-})
-
-// Err Handler
-app.use(function (err, req, res, next) {
-  console.log(err)
-  res.status(500).json({
-    status: 'fail',
-    errors: err.message
-  })
-})
 
 
 // * Dictionary * //

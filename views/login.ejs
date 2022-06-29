@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Here :))</title>
+</head>
+
+<body>
+  <!-- <form action="/login" method="post">
+    <input type="text" name="username" placeholder="input your username here...">
+    <input type="password" name="password" placeholder="input your password here...">
+    <button type="submit">Send</button>
+  </form> -->
+
+
+
+  <div id="form-login">
+    <input id="username" type="text" name="username" placeholder="input your username here...">
+    <input id="password" type="password" name="password" placeholder="input your password here...">
+    <button onclick="login()" type="button">Send</button>
+  </div>
+
+  <script>
+    function login() {
+      let username = document.getElementById("username").value
+      let password = document.getElementById("password").value
+
+      // console.log(username, password)
+      if (username == '' || password == '') {
+        alert("Username or Password cant be blank")
+      } else {
+        fetch(
+          '/login',
+          {
+            method: 'post',
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ username: username, password: password })
+          }
+        ).then(function (response) {
+          return response.json()
+        }).then(function (result) {
+          console.log(result)
+        }).catch(function (error) {
+          console.log(error)
+        })
+      }
+    }
+  </script>
+</body>
+
+</html>
