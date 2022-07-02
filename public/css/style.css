@@ -18,7 +18,7 @@ a.nav-link {
 }
 
 .main-header {
-  top: 32%;
+  top: 23%;
 }
 
 .main-header h1,
@@ -150,12 +150,12 @@ hr {
 
 }
 
-
+/* navbar collapse */
+.navbar-collapse {
+  text-align: right;
+}
 
 @media screen and (min-width: 576px) and (max-width: 767px) {
-  .navbar-collapse {
-    text-align: center;
-  }
 
   .main-header h1 {
     font-size: 2rem;

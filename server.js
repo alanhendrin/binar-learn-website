@@ -22,8 +22,6 @@ const Routes = require('./routes/route')
 app.use(Routes)
 
 
-
-
 // * Dictionary * //
 // memulai server : npm start
 // menginstall package : npm install [nama package]
