@@ -23,7 +23,10 @@
     <img src="assets/main-bg.jpg" class="img-fluid w-100" alt="background-image">
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top w-100 bg-dark bg-opacity-50">
       <div class="container-fluid my-lg-3">
-        <a class="navbar-brand text-uppercase fw-bold ms-lg-5 me-lg-5 px-lg-5 " href="#">Logo</a>
+        <a class="navbar-brand text-uppercase fw-bold ms-lg-5 me-lg-2 px-lg-3 ms-md-5 me-md-2 px-md-3 ms-sm-5 me-sm-2 px-sm-3"
+          href="#">
+          <img src="assets/logo-ps.png" alt="logo" width="45" height="45">
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -36,7 +39,7 @@
             <a class="nav-link text-white text-uppercase fw-bold me-lg-5" href="#">About me</a>
           </div>
           <div class="navbar-nav">
-            <a class="nav-link text-white text-uppercase fw-bold me-lg-2" href="/sign-up">Sign up</a>
+            <a id="user" class="nav-link text-white text-uppercase fw-bold me-lg-2" href="/sign-up">Sign up</a>
             <a onclick="logout()" id="login" class="nav-link text-white text-uppercase fw-bold pe-lg-5 me-lg-5"
               href="/login">Login</a>
           </div>
@@ -45,12 +48,11 @@
     </nav>
 
     <div class="main-header position-absolute w-100 text-center">
-      <h3 id="title" class="text-white text-uppercase fw-bold mb-lg-5 mb-md-4 mb-sm-3">Welcome</h3>
       <h1 class="text-white text-uppercase fw-bold mb-lg-5 mb-md-4 mb-sm-3">play traditional game</h1>
       <h3 class="text-white mb-lg-5 mb-md-4 mb-sm-3">Experience new traditional game play</h3>
-      <a onclick="changeLink()" id="game"
-        class="btn btn-warning text-uppercase fw-bold py-lg-3 px-lg-5 py-md-2 px-md-4 py-sm-1 px-sm-3"
-        href="/game-bgk">play now</a>
+      <a id="game" class="btn btn-warning text-uppercase fw-bold py-lg-3 px-lg-5 py-md-2 px-md-4 py-sm-1 px-sm-3"
+        href="/login">play
+        now</a>
     </div>
 
     <div class="main-scroll position-absolute w-100 text-center">
@@ -62,7 +64,6 @@
   </div>
 
   <!-- Page 2 - Gameplay Options -->
-
   <div class="Page-2">
     <div class="gameplay-options position-relative" id="gameplay-options">
       <img src="assets/the-games-bg.jpg" class="img-fluid w-100" alt="background-image">
@@ -407,23 +408,23 @@
   </div>
 
   <script src="/js/script.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     let dataUser = JSON.parse(getCookie('qw3r7y'))
-    console.log(dataUser)
+    console.log(`Username: ${dataUser.username}`)
 
     // game batu gunting kertas tanpa login
-    function changeLink() {
-      var link = document.getElementById("game")
-      if (dataUser == null) {
-        link.setAttribute('href', "http://localhost:7000/login")
-      }
+    var link1 = document.getElementById("game")
+    if (dataUser.username != '') {
+      link1.setAttribute('href', "http://localhost:7000/game-bgk")
     }
-    // ganti welcome text ke welcome {nama user yg login}
-    if (dataUser != null) {
-      document.getElementById('title').innerHTML = `Welcome ${dataUser.username} !!!`
+    // ganti sign up text ke user {nama user yg login} dan juga attribut linknya  
+    if (dataUser.username != '') {
+      document.getElementById('user').innerHTML = `${dataUser.email}`
+      document.getElementById('user').setAttribute('href', "http://localhost:7000/account")
     }
     // ganti text login ke logout setelah berhasil login
-    if (dataUser != null) {
+    if (dataUser.username != '') {
       document.getElementById('login').innerHTML = `Logout`
     }
     // ---logout--- ; note 'qw3r7y' = unik id yg sama dengan login.ejs

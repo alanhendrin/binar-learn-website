@@ -17,7 +17,7 @@
     <label for="psw"><b>Password</b></label>
     <input id="password" type="password" placeholder="Enter Password" name="psw" required>
 
-    <button onclick="setTimeout(login(),1000)" type="submit">Login</button>
+    <button onclick="login()" type="submit">Login</button>
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>
@@ -30,7 +30,17 @@
 
 
   <script src="/js/script.js"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    onload = () => {
+      Swal.fire({
+        icon: 'info',
+        title: 'Welcome Buddy :)',
+        text: 'Please enter your username and password!'
+      })
+    }
+  </script>
   <script>
     function cancel() {
       window.location.href = '/'
@@ -41,12 +51,11 @@
       let password = document.getElementById("password").value
 
       if (username == '' || password == '') {
-        swal({
-          title: "Fields Empty!",
-          text: "Please check the missing field!",
-          icon: "warning",
-          button: "OK",
-        });
+        Swal.fire(
+          'Mising Field!',
+          'Username and Password cant be blank!',
+          'warning'
+        )
 
       } else {
         fetch(
@@ -62,19 +71,37 @@
           console.log(result)
           setCookie('qw3r7y', JSON.stringify(result.resultData), 1)
 
-          let dataUser = getCookie('qw3r7y')
+          let dataUser = JSON.parse(getCookie('qw3r7y'))
           console.log(dataUser)
-          if (dataUser.username == null) {
+
+          if (dataUser.username == '') {
             console.log('user data tidak ditemukan')
-            swal({
-              title: "Not Found!",
-              text: "Username or Password is wrong!",
-              icon: "error",
-              button: "OK",
+            Swal.fire(
+              'User data not found!',
+              'Please enter the correct username and password',
+              'error'
+            )
+          } else {
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top',
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+            })
+
+            Toast.fire({
+              icon: 'success',
+              title: 'Signed in successfully'
             });
 
-          } else {
-            window.location.href = '/'
+            setTimeout(() => {
+              window.location.href = '/'
+            }, 3500);
           }
         }).catch(function (error) {
           console.log(error)
