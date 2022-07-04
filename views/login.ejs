@@ -62,8 +62,8 @@
           console.log(result)
           setCookie('qw3r7y', JSON.stringify(result.resultData), 1)
 
-          let dataUser = JSON.parse(getCookie('qw3r7y'))
-          // console.log(dataUser)
+          let dataUser = getCookie('qw3r7y')
+          console.log(dataUser)
           if (dataUser.username == null) {
             console.log('user data tidak ditemukan')
             swal({

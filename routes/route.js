@@ -1,7 +1,11 @@
 const express = require('express')
 const Routes = express.Router()
-let dataUser = { username: "alan", password: "12345", token: 'asdsdadwad-10019102910fa', email: 'alan@santuy.co.id' };
-let statusLogin;
+let dataUser = {
+  username: "alan",
+  password: "12345",
+  token: 'asdsdadwad-10019102910fa',
+  email: 'alan@santuy.co.id'
+};
 
 
 // homepage
@@ -20,13 +24,21 @@ Routes.get('/login', function (req, res) {
 })
 
 Routes.post('/login', function (req, res) {
-  const { username, password } = req.body
-  statusLogin = req.body.statusLogin
+  const {
+    username,
+    password
+  } = req.body
 
   if (!(dataUser.username === username))
-    return res.send(JSON.stringify({ message: "Wrong Username" }));
+    return res.send(JSON.stringify({
+      message: "Wrong Username",
+      statusCode: 500
+    }));
   if (!(dataUser.password === password))
-    return res.send(JSON.stringify({ message: "Wrong Password" }));
+    return res.send(JSON.stringify({
+      message: "Wrong Password",
+      statusCode: 500,
+    }));
 
   res.send(
     JSON.stringify({
@@ -96,4 +108,4 @@ Routes.post('/sign-up-api', (res, req) => {
   }
 })
 
-module.exports = Routes 
+module.exports = Routes
