@@ -37,7 +37,8 @@
           </div>
           <div class="navbar-nav">
             <a class="nav-link text-white text-uppercase fw-bold me-lg-2" href="/sign-up">Sign up</a>
-            <a id="login" class="nav-link text-white text-uppercase fw-bold pe-lg-5 me-lg-5" href="/login">Login</a>
+            <a onclick="logout()" id="login" class="nav-link text-white text-uppercase fw-bold pe-lg-5 me-lg-5"
+              href="/login">Login</a>
           </div>
         </div>
       </div>
@@ -47,7 +48,8 @@
       <h3 id="title" class="text-white text-uppercase fw-bold mb-lg-5 mb-md-4 mb-sm-3">Welcome</h3>
       <h1 class="text-white text-uppercase fw-bold mb-lg-5 mb-md-4 mb-sm-3">play traditional game</h1>
       <h3 class="text-white mb-lg-5 mb-md-4 mb-sm-3">Experience new traditional game play</h3>
-      <a class="btn btn-warning text-uppercase fw-bold py-lg-3 px-lg-5 py-md-2 px-md-4 py-sm-1 px-sm-3"
+      <a onclick="changeLink()" id="game"
+        class="btn btn-warning text-uppercase fw-bold py-lg-3 px-lg-5 py-md-2 px-md-4 py-sm-1 px-sm-3"
         href="/game-bgk">play now</a>
     </div>
 
@@ -408,15 +410,30 @@
   <script>
     let dataUser = JSON.parse(getCookie('qw3r7y'))
     console.log(dataUser)
+
+    // game batu gunting kertas tanpa login
+    function changeLink() {
+      var link = document.getElementById("game")
+      if (dataUser == null) {
+        link.setAttribute('href', "http://localhost:7000/login")
+      }
+    }
+    // ganti welcome text ke welcome {nama user yg login}
     if (dataUser != null) {
       document.getElementById('title').innerHTML = `Welcome ${dataUser.username} !!!`
     }
-
+    // ganti text login ke logout setelah berhasil login
     if (dataUser != null) {
       document.getElementById('login').innerHTML = `Logout`
     }
-
+    // ---logout--- ; note 'qw3r7y' = unik id yg sama dengan login.ejs
+    function logout() {
+      if (dataUser != null) {
+        eraseCookie('qw3r7y')
+      }
+    }
   </script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
     crossorigin="anonymous"></script>
