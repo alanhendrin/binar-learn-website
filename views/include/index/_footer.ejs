@@ -1,0 +1,33 @@
+<script src="/js/script.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  let dataUser = JSON.parse(getCookie('qw3r7y'))
+  console.log(`Username: ${dataUser.username}`)
+
+  // game batu gunting kertas tanpa login
+  var link1 = document.getElementById("game")
+  if (dataUser.username != '') {
+    link1.setAttribute('href', "http://localhost:7000/game-bgk")
+  }
+  // ganti sign up text ke user {nama user yg login} dan juga attribut linknya  
+  if (dataUser.username != '') {
+    document.getElementById('user').innerHTML = `${dataUser.email}`
+    document.getElementById('user').setAttribute('href', "http://localhost:7000/account")
+  }
+  // ganti text login ke logout setelah berhasil login
+  if (dataUser.username != '') {
+    document.getElementById('login').innerHTML = `Logout`
+  }
+  // ---logout--- ; note 'qw3r7y' = unik id yg sama dengan login.ejs
+  function logout() {
+    if (dataUser != null) {
+      eraseCookie('qw3r7y')
+    }
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+
+</html>

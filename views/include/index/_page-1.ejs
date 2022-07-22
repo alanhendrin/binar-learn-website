@@ -1,0 +1,46 @@
+<body>
+  <!-- Page 1 - Main -->
+  <div class="main position-relative" id="main">
+    <img src="assets/main-bg.jpg" class="img-fluid w-100" alt="background-image">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top w-100 bg-dark bg-opacity-50">
+      <div class="container-fluid my-lg-3">
+        <a class="navbar-brand text-uppercase fw-bold ms-lg-5 me-lg-2 px-lg-3 ms-md-5 me-md-2 px-md-3 ms-sm-5 me-sm-2 px-sm-3"
+          href="#">
+          <img src="assets/logo-ps.png" alt="logo" width="45" height="45">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="navbar-nav me-auto mb-2 mb-lg-0">
+            <a class="nav-link text-white text-uppercase fw-bold me-lg-5 ms-lg-5" aria-current="page" href="#">Home</a>
+            <a class="nav-link text-white text-uppercase fw-bold me-lg-5" href="#">Work</a>
+            <a class="nav-link text-white text-uppercase fw-bold me-lg-5" href="#">Contact</a>
+            <a class="nav-link text-white text-uppercase fw-bold me-lg-5" href="#">About me</a>
+          </div>
+          <div class="navbar-nav">
+            <a id="user" class="nav-link text-white text-uppercase fw-bold me-lg-2" href="/sign-up">Sign up</a>
+            <a onclick="logout()" id="login" class="nav-link text-white text-uppercase fw-bold pe-lg-5 me-lg-5"
+              href="/login">Login</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="main-header position-absolute w-100 text-center">
+      <h1 class="text-white text-uppercase fw-bold mb-lg-5 mb-md-4 mb-sm-3">play traditional game</h1>
+      <h3 class="text-white mb-lg-5 mb-md-4 mb-sm-3">Experience new traditional game play</h3>
+      <a id="game" class="btn btn-warning text-uppercase fw-bold py-lg-3 px-lg-5 py-md-2 px-md-4 py-sm-1 px-sm-3"
+        href="/login">play
+        now</a>
+    </div>
+
+    <div class="main-scroll position-absolute w-100 text-center">
+      <p class="text-white text-uppercase fw-bold mb-0">The Story</p>
+      <a href="#gameplay-options" class="btn-down">
+        <i class="bi bi-caret-down color-white"><img src="assets/scroll-down.svg" alt="btn-down"></i>
+      </a>
+    </div>
+  </div>
+  <!-- Page 1 - Main -->

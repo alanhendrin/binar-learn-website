@@ -1,0 +1,53 @@
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (() => {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+  })()
+</script>
+
+<!-- option show password -->
+<script>
+  function myFunction() {
+    var x = document.getElementById("myInput");
+    var y = document.getElementById("myInputConfirm");
+    if (x.type === "password" && y.type === "password") {
+      x.type = "text";
+      y.type = "text";
+    } else {
+      x.type = "password";
+      y.type = "password";
+    }
+  }
+</script>
+<script>
+  // check password and confirm password
+  var check = function () {
+    if (document.getElementById('myInput').value ==
+      document.getElementById('myInputConfirm').value) {
+      document.getElementById('message').style.color = 'green';
+      document.getElementById('message').innerHTML = 'Matching';
+    } else {
+      document.getElementById('message').style.color = 'red';
+      document.getElementById('message').innerHTML = 'Not Matching';
+    }
+  }
+</script>
+
+</body>
+
+</html>

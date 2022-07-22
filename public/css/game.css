@@ -1,0 +1,38 @@
+/* page game batu gunting kertas */
+
+.background {
+  background-color: #9C835F;
+}
+
+.backButton {
+  color: #724C21;
+}
+
+.icon {
+  width: 40%;
+  height: 40%;
+}
+
+.pilihanPlayer:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+#hasilPermainan {
+  display: none;
+}
+
+.pilihan {
+  background: #C4C4C4;
+  border-radius: 30px;
+}
+
+.hasil {
+  width: 200px;
+  height: 166px;
+  border-radius: 10px;
+  transform: rotate(-28.87deg);
+  text-align: center;
+  padding-top: 15%;
+
+}
