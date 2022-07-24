@@ -2,17 +2,18 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   let dataUser = JSON.parse(getCookie('qw3r7y'))
+  console.log(dataUser);
   console.log(`Username: ${dataUser.username}`)
 
   // game batu gunting kertas tanpa login
   var link1 = document.getElementById("game")
   if (dataUser.username != '') {
-    link1.setAttribute('href', "http://localhost:7000/game-bgk")
+    link1.setAttribute('href', "http://localhost:7070/game-bgk")
   }
   // ganti sign up text ke user {nama user yg login} dan juga attribut linknya  
   if (dataUser.username != '') {
     document.getElementById('user').innerHTML = `${dataUser.email}`
-    document.getElementById('user').setAttribute('href', "http://localhost:7000/account")
+    document.getElementById('user').setAttribute('href', "http://localhost:7070/update-user")
   }
   // ganti text login ke logout setelah berhasil login
   if (dataUser.username != '') {

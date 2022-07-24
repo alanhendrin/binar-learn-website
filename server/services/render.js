@@ -1,3 +1,4 @@
+const axios = require('axios');
 
 exports.home = (req, res) => {
   res.render('index');
@@ -13,4 +14,8 @@ exports.login = (req, res) => {
 
 exports.signUp = (req, res) => {
   res.render('sign-up');
+}
+
+exports.updateUser = (req, res) => {
+  res.render('update-user');
 }

@@ -30,7 +30,6 @@
 
 
   <script src="/js/script.js"></script>
-  <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     onload = () => {
@@ -47,8 +46,8 @@
     }
 
     function login() {
-      let username = document.getElementById("username").value
-      let password = document.getElementById("password").value
+      let username = document.getElementById("username").value;
+      let password = document.getElementById("password").value;
 
       if (username == '' || password == '') {
         Swal.fire(
@@ -68,17 +67,17 @@
         ).then(function (response) {
           return response.json()
         }).then(function (result) {
-          console.log(result)
-          setCookie('qw3r7y', JSON.stringify(result.resultData), 1)
+          console.log(result, "ini hasil console log result")
+          setCookie('qw3r7y', JSON.stringify(result.data), 1)
 
           let dataUser = JSON.parse(getCookie('qw3r7y'))
           console.log(dataUser)
 
           if (dataUser.username == '') {
-            console.log('user data tidak ditemukan')
+            console.log('username not found')
             Swal.fire(
               'User data not found!',
-              'Please enter the correct username and password',
+              'Please enter the correct username or password',
               'error'
             )
           } else {

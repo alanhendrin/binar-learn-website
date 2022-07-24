@@ -23,7 +23,7 @@ app.use(express.static('public'));
 
 // middleware untuk convert data dare FE ke BE
 app.use(express.json()) // terima data berupa json
-app.use(express.urlencoded({ extended: true })) // terima data berupa form
+// app.use(express.urlencoded({ extended: true })) // terima data berupa form
 
 // parser request to body-parser
 app.use(bodyparser.urlencoded({ extended: true }))
