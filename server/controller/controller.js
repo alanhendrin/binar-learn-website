@@ -3,7 +3,10 @@ const userProfile = require('../model/model-profiles');
 const gameHistory = require('../model/model-history');
 const gameHistoryTotal = require('../model/model-history-total');
 const mongoose = require('mongoose');
-// const { response } = require('express');
+const Cryptr = require('cryptr');
+const secretKey = 'SecretKey';
+const CryptrConverter = new Cryptr(secretKey);
+const JWT = require('jsonwebtoken')
 
 
 // Register controller
@@ -14,38 +17,37 @@ exports.create = async function (req, res) {
     return;
   } else {
     try {
+      // check user exist
       let findUser = await User.findOne({ username: username, email: email })
       if (findUser) {
-        res.status(400).send({
-          message: "Username or email has been registered",
-          statusCode: 400
-        })
+        res.status(400).send(`<script>alert("Username or email already taken, please choose another username or email!"); window.location.href = "/sign-up"; </script>`);
       } else {
+        // encryption password
+        let newPasswordPassing = CryptrConverter.encrypt(password)
         // new user
         let userData = await User.create({
           userId: new mongoose.Types.ObjectId(),
           username: req.body.username,
-          password: req.body.password,
+          password: newPasswordPassing,
           email: req.body.email
         })
 
         let userProfiles = await userProfile.create({
           userId: userData.userId,
-          firstName: req.body.firstName,
-          lastName: req.body.lastName,
-          gender: req.body.gender,
-          phoneNumber: req.body.phoneNumber,
-          address: req.body.address,
-          zipCode: req.body.zipCode,
+          firstName: req.body.firstName || "",
+          lastName: req.body.lastName || "",
+          gender: req.body.gender || "",
+          phoneNumber: req.body.phoneNumber || "",
+          address: req.body.address || "",
+          zipCode: req.body.zipCode || "",
           birthDate: req.body.dob
         })
-        console.log(userProfiles);
-        res.send({
-          statusCode: 200,
-          message: 'Successful to register!',
-          result: { username: username, email: email }
-        })
-        // await res.redirect('/');
+        // res.send({
+        //   statusCode: 200,
+        //   message: 'Congratulations, your account has been successfully created!',
+        //   result: { username: username, email: email }
+        // })
+        res.status(200).send(`<script>alert("Congratulations, your account has been successfully created!"); window.location.href = "/"; </script>`);
       }
     } catch (err) {
       res.status(500).send({ message: err.message || "Some error occurred while creating a create operation" })
@@ -66,10 +68,15 @@ exports.login = async function (req, res) {
         res.status(400).send({ message: 'Wrong username or password', statusCode: 400 })
       } else {
         // check password
-        if (findUser.password === password) {
+        if (CryptrConverter.decrypt(findUser.password) === password) {
+          // create token akses
+          let createToken = JWT.sign({
+            username: findUser.username,
+            email: findUser.email,
+            access: ['dashboard', 'create_data', 'delete_data', 'update_data', 'read_data']
+          }, secretKey)
           // get data profile
           let getProfiles = await userProfile.findOne({ userId: findUser.userId });
-          const randomString = Math.random().toString(36).substring(2, 36);
           res.send({
             message: 'Successfull to get data user',
             statusCode: 200,
@@ -77,7 +84,7 @@ exports.login = async function (req, res) {
               id: findUser.userId,
               username: findUser.username,
               email: findUser.email,
-              token: randomString,
+              token: createToken,
               profiles: getProfiles
             }
           })
@@ -85,7 +92,7 @@ exports.login = async function (req, res) {
           res.status(400).send({ message: 'Wrong username or password', statusCode: 400 })
         }
       }
-      console.log(findUser)
+      // console.log(findUser)
     } catch (error) {
       console.log(error)
       res.status(500).send({ message: err.message || "Error occured while retriving user information" })
@@ -123,9 +130,10 @@ exports.saveScore = async function (req, res) {
 }
 
 exports.getScore = async function (req, res) {
-  let newUserId = req.params.id
+  let userId = req.params.id
   try {
     let getScore = await gameHistoryTotal.aggregate([
+      { $match: { 'userId': userId } },
       {
         $lookup: {
           from: 'game-history', //ini nama collectionnya di mongodb yg akan di join
