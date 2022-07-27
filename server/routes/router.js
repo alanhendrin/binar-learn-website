@@ -35,10 +35,16 @@ route.get('/sign-up', services.signUp)
  */
 route.get('/update-user', services.updateUser);
 
+/**
+ * @description for dashboard
+ * @method GET /dashboard
+ */
+route.get('/dashboard', services.dashboard);
+
 
 // API
 route.post('/api/users', controller.create);
-// route.get('/api/users', controller.find);
+route.get('/api/users', controller.find);
 // route.put('/api/users/:id', controller.update);
 // route.delete('/api/users/:id', controller.delete);
 

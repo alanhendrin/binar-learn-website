@@ -1,0 +1,40 @@
+<!-- include header -->
+<%- include('include/dashboard/_header') %>
+<!-- include header -->
+
+<!-- Main Site -->
+<main id="site-main">
+  <div class="container">
+    <div class="box-nav d-flex justify-between">
+      <a href="/add-user" class="border-shadow">
+        <span class="text-gradient">New User <i class="fa-solid fa-user"></i></span>
+      </a>
+    </div>
+
+    <!-- form handling -->
+    <form action="/dashboard" method="post">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>No</th>
+            <th>User ID</th>
+            <th>Win</th>
+            <th>Draw</th>
+            <th>Lose</th>
+            <th>Play At</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%- include('include/dashboard/_show') %>
+        </tbody>
+      </table>
+    </form>
+  </div>
+
+</main>
+<!-- Main Site -->
+
+<!-- include footer -->
+<%- include('include/dashboard/_footer') %>
+<!-- include footer -->

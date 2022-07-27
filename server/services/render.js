@@ -19,3 +19,16 @@ exports.signUp = (req, res) => {
 exports.updateUser = (req, res) => {
   res.render('update-user');
 }
+
+exports.dashboard = (req, res) => {
+  axios
+    .get("http://localhost:7070/api/users")
+    .then((response) => {
+      res.render("dashboard", {
+        users: response.data,
+      });
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+};
