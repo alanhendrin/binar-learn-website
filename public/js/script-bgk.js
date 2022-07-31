@@ -1,21 +1,14 @@
-// mengambil element yg di butuhkan
-const pilihanPlayer = document.querySelectorAll(".pilihanPlayer");
-const pilihanComputer = document.querySelectorAll(".pilihanComputer");
-const vs = document.getElementById("vs");
-const hasilPermainan = document.getElementById("hasilPermainan");
-const textHasilPermainan1 = document.querySelector(
-  "#hasilPermainan h1:nth-child(1)"
-);
-const textHasilPermainan2 = document.querySelector(
-  "#hasilPermainan h1:nth-child(2)"
-);
-const cekOpacity = hasilPermainan.classList.contains("bg-opacity-50");
-const scorePlayer = document.getElementById("scorePlayer");
-const scoreCom = document.getElementById("scoreCom");
-const ulang = document.getElementById("ulang");
-
-var randomNumb = Math.floor(Math.random() * pilihanComputer.length);
-console.log(randomNumb);
+// memanggil data yang ada di cookie
+function getCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+}
 
 class Aturan {
   // Var Default
@@ -27,15 +20,7 @@ class Aturan {
       throw new Error("Tidak Bisa Mengakses Abstract Class");
     }
 
-    const {
-      vs,
-      hasilPermainan,
-      textHasilPermainan1,
-      textHasilPermainan2,
-      cekOpacity,
-      scorePlayer,
-      scoreCom,
-    } = elementHasil;
+    const { vs, hasilPermainan, textHasilPermainan1, textHasilPermainan2, cekOpacity, scorePlayer, scoreCom } = elementHasil;
 
     this.vs = vs;
     this.hasilPermainan = hasilPermainan;
@@ -78,8 +63,7 @@ class Aturan {
       //menampilkan hasil permainan di console
       // console.log('Hasil: Draw')
       console.log(
-        `Keterangan: Tidak ada yang mendapatkan poin, Total Score >> Player: ${
-          this.#sp
+        `Keterangan: Tidak ada yang mendapatkan poin, Total Score >> Player: ${this.#sp
         }, Com: ${this.#sc}`
       );
     } else if (hasilPP === "batu") {
@@ -93,10 +77,9 @@ class Aturan {
         this.scorePlayer.innerText = this.#sp += 1;
 
         //menampilkan hasil permainan di console
-        console.log("Hasil: Player Win");
+        // console.log("Hasil: Player Win");
         console.log(
-          `Keterangan: Player mendapatkan 1 poin. Total Score >> Player: ${
-            this.#sp
+          `Keterangan: Player mendapatkan 1 poin. Total Score >> Player: ${this.#sp
           }, Com: ${this.#sc}`
         );
       } else {
@@ -111,12 +94,11 @@ class Aturan {
         //menampilkan hasil permainan di console
         // console.log('Hasil: Com Win')
         console.log(
-          `Keterangan: Computer mendapatkan 1 poin. Total Score >> Player: ${
-            this.#sp
+          `Keterangan: Computer mendapatkan 1 poin. Total Score >> Player: ${this.#sp
           }, Com: ${this.#sc}`
         );
       }
-    } else if (hasilPP == "gunting") {
+    } else if (hasilPP === "gunting") {
       if (hasilPC === "batu") {
         this.textHasilPermainan1.style.display = "block";
         this.textHasilPermainan1.innerText = "COM";
@@ -127,10 +109,9 @@ class Aturan {
         this.scoreCom.innerText = this.#sc += 1;
 
         //menampilkan hasil permainan di console
-        console.log("Hasil: Com Win");
+        // console.log("Hasil: Com Win");
         console.log(
-          `Keterangan: Computer mendapatkan 1 poin. Total Score >> Player: ${
-            this.#sp
+          `Keterangan: Computer mendapatkan 1 poin. Total Score >> Player: ${this.#sp
           }, Com: ${this.#sc}`
         );
       } else {
@@ -145,8 +126,7 @@ class Aturan {
         //menampilkan hasil permainan di console
         // console.log('Hasil: Player Win')
         console.log(
-          `Keterangan: Player mendapatkan 1 poin. Total Score >> Player: ${
-            this.#sp
+          `Keterangan: Player mendapatkan 1 poin. Total Score >> Player: ${this.#sp
           }, Com: ${this.#sc}`
         );
       }
@@ -163,8 +143,7 @@ class Aturan {
         //menampilkan hasil permainan di console
         // console.log('Hasil: Player Win')
         console.log(
-          `Keterangan: Player mendapatkan 1 poin. Total Score >> Player: ${
-            this.#sp
+          `Keterangan: Player mendapatkan 1 poin. Total Score >> Player: ${this.#sp
           }, Com: ${this.#sc}`
         );
       } else {
@@ -179,8 +158,7 @@ class Aturan {
         //menampilkan hasil permainan di console
         // console.log('Hasil: Com Win')
         console.log(
-          `Keterangan: Computer mendapatkan 1 poin. Total Score >> Player: ${
-            this.#sp
+          `Keterangan: Computer mendapatkan 1 poin. Total Score >> Player: ${this.#sp
           }, Com: ${this.#sc}`
         );
       }
@@ -209,7 +187,7 @@ class Permainan extends Aturan {
   #stylePilihan = "pilihan";
   #styleHasil = "hasil";
   #waktuAnimasiMulai = 100;
-  #waktuAnimasiSelesai = 1000;
+  #waktuAnimasiSelesai = 1300;
 
   constructor(elementHasil, pilihan, ulang) {
     super(elementHasil);
@@ -274,6 +252,17 @@ class Permainan extends Aturan {
 
   // proses mencari pemenang
   methodBermain() {
+    let payload = {
+      win: 0,
+      lose: 0,
+      draw: 0,
+    };
+    let dataUser = JSON.parse(getCookie('qw3r7y'));
+    console.log(dataUser);
+    let profiles = dataUser.profiles;
+    console.log(`Nama Player: ${profiles.firstName}`);
+    let userId = dataUser.id;
+
     this.pilihanPlayer.forEach((pp) => {
       pp.addEventListener("click", (event) => {
         // mengembalikan kondisi awal permainan
@@ -287,20 +276,76 @@ class Permainan extends Aturan {
         setTimeout(() => {
           // ambil pilihan player
           const hasilPilihanPlayer = this._finalPilihanPlayer(pp);
-          // mengambil angka acak 1-3
-          const hasilPC = randomNumb;
-          console.log(hasilPC);
+          // mengambil angka acak 0-2
+          const hasilPC = Math.floor(Math.random() * pilihanComputer.length);
           // mengambil pilihan computer
           const hasilPilihanComputer = this._finalPilihanComputer(hasilPC);
           // mencari pemenang
           this._finalPermainan(hasilPilihanPlayer, hasilPilihanComputer);
-
           // memberikan style hasil final permainan
           this.pilihanComputer[hasilPC].classList.add(this.#stylePilihan);
           this.vs.style.display = "none";
           this.hasilPermainan.style.display = "block";
           this.hasilPermainan.classList.add(this.#styleHasil);
+
+          let y = document.getElementsByClassName('pilihan')[0].id;
+          console.log(y);
+          let z = document.getElementsByClassName('pilihan')[1].id;
+          console.log(z);
+
+          if (y === z) {
+            payload.win = 0;
+            payload.draw = 1;
+            payload.lose = 0;
+          } else if (y === "batu" && z === "gunting") {
+            payload.win = 1;
+            payload.draw = 0;
+            payload.lose = 0;
+          } else if (y === "batu" && z === "kertas") {
+            payload.win = 0;
+            payload.draw = 0;
+            payload.lose = 1;
+          } else if (y === "gunting" && z === "kertas") {
+            payload.win = 1;
+            payload.draw = 0;
+            payload.lose = 0;
+          } else if (y === "gunting" && z === "batu") {
+            payload.win = 0;
+            payload.draw = 0;
+            payload.lose = 1;
+          } else if (y === "kertas" && z === "batu") {
+            payload.win = 1;
+            payload.draw = 0;
+            payload.lose = 0;
+          } else if (y === "kertas" && z === "gunting") {
+            payload.win = 0;
+            payload.draw = 0;
+            payload.lose = 1;
+          } else {
+            throw new Error('Hasil Pertandingan Tidak Valid')
+          }
         }, this.#waktuAnimasiSelesai);
+
+        fetch(
+          'game-score',
+          {
+            method: 'post',
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({
+              userId: userId,
+              win: payload.win,
+              draw: payload.draw,
+              lose: payload.lose,
+              typePlayer: profiles.firstName
+            })
+          }
+        ).then((res) => {
+          return res.json()
+        }).then((result) => {
+          console.log(result)
+        }).catch((err) => {
+          console.log(err)
+        })
       });
     });
   }
@@ -317,6 +362,19 @@ class Permainan extends Aturan {
   }
 }
 
+// mengambil element yg di butuhkan
+const pilihanPlayer = document.querySelectorAll(".pilihanPlayer");
+const pilihanComputer = document.querySelectorAll(".pilihanComputer");
+const vs = document.getElementById("vs");
+const hasilPermainan = document.getElementById("hasilPermainan");
+const textHasilPermainan1 = document.querySelector("#hasilPermainan h1:nth-child(1)");
+const textHasilPermainan2 = document.querySelector("#hasilPermainan h1:nth-child(2)");
+const cekOpacity = hasilPermainan.classList.contains("bg-opacity-50");
+const scorePlayer = document.getElementById("scorePlayer");
+const scoreCom = document.getElementById("scoreCom");
+const ulang = document.getElementById("ulang");
+
+
 // instansiasi mulaiPermainan class
 const mulaiPermainan = new Permainan(
   {
@@ -326,11 +384,11 @@ const mulaiPermainan = new Permainan(
     textHasilPermainan2,
     cekOpacity,
     scorePlayer,
-    scoreCom,
+    scoreCom
   },
   {
     pilihanPlayer,
-    pilihanComputer,
+    pilihanComputer
   },
   ulang
 );
@@ -338,3 +396,31 @@ const mulaiPermainan = new Permainan(
 // memanggil mulaiPermainan class
 mulaiPermainan.methodBermain();
 mulaiPermainan.methodUlang();
+
+
+
+// // save game data (win, draw, lose)
+// const saveData = document.querySelectorAll('.pilihanPlayer');
+// saveData.forEach((pp) => {
+//   pp.addEventListener('click', (event) => {
+//     // function play() {
+//     // var codePilihanComp = JSON.parse(getCookie('codePilihanComp'));
+//     // console.log(codePilihanComp);
+//     // let userId = dataUser.id;
+//     // let win = 0;
+//     // let draw = 0;
+//     // let lose = 0;
+
+//     var z = document.getElementsByName('computerChoice')[hasilPC];
+//     console.log(z);
+
+//     var y = document.getElementsByClassName('pilihan');
+//     // console.log(`Hasil dari getElementsByClassName ${y}`);
+//     console.log(y);
+
+//     var x = document.querySelectorAll('.pilihan');
+//     // console.log(`Hasil dari querySelectorAll ${x}`);
+//     console.log(x);
+
+
+
