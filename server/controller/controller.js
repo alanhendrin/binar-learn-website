@@ -182,18 +182,18 @@ exports.getScore = async function (req, res) {
   let userId = req.params.id
   try {
     let getScore = await gameHistoryTotal.aggregate([{
-        $match: {
-          'userId': userId
-        }
-      },
-      {
-        $lookup: {
-          from: 'game-history', //ini nama collectionnya di mongodb yg akan di join
-          localField: 'userId',
-          foreignField: 'userId',
-          as: 'score_history'
-        }
+      $match: {
+        'userId': userId
       }
+    },
+    {
+      $lookup: {
+        from: 'game-history', //ini nama collectionnya di mongodb yg akan di join
+        localField: 'userId',
+        foreignField: 'userId',
+        as: 'score_history'
+      }
+    }
     ])
     res.send({
       statusCode: 200,

@@ -264,7 +264,7 @@ class Permainan extends Aturan {
     let userId = dataUser.id;
 
     this.pilihanPlayer.forEach((pp) => {
-      pp.addEventListener("click", (event) => {
+      pp.addEventListener("click", async (event) => {
         // mengembalikan kondisi awal permainan
         this.#kondisiAwal();
         // memberi style pilihan player
@@ -322,30 +322,32 @@ class Permainan extends Aturan {
             payload.draw = 0;
             payload.lose = 1;
           } else {
-            throw new Error('Hasil Pertandingan Tidak Valid')
+            throw new Error('Hasil Pertandingan Tidak Valid');
           }
         }, this.#waktuAnimasiSelesai);
 
-        fetch(
-          'game-score',
-          {
-            method: 'post',
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify({
-              userId: userId,
-              win: payload.win,
-              draw: payload.draw,
-              lose: payload.lose,
-              typePlayer: profiles.firstName
-            })
-          }
-        ).then((res) => {
-          return res.json()
-        }).then((result) => {
-          console.log(result)
-        }).catch((err) => {
-          console.log(err)
-        })
+        setTimeout(() => {
+          fetch(
+            'game-score',
+            {
+              method: 'post',
+              headers: { "content-type": "application/json" },
+              body: JSON.stringify({
+                userId: userId,
+                win: payload.win,
+                draw: payload.draw,
+                lose: payload.lose,
+                typePlayer: profiles.firstName
+              })
+            }
+          ).then((res) => {
+            return res.json()
+          }).then((result) => {
+            console.log(result)
+          }).catch((err) => {
+            console.log(err)
+          })
+        }, 1400)
       });
     });
   }
@@ -361,6 +363,7 @@ class Permainan extends Aturan {
     });
   }
 }
+
 
 // mengambil element yg di butuhkan
 const pilihanPlayer = document.querySelectorAll(".pilihanPlayer");
@@ -396,31 +399,3 @@ const mulaiPermainan = new Permainan(
 // memanggil mulaiPermainan class
 mulaiPermainan.methodBermain();
 mulaiPermainan.methodUlang();
-
-
-
-// // save game data (win, draw, lose)
-// const saveData = document.querySelectorAll('.pilihanPlayer');
-// saveData.forEach((pp) => {
-//   pp.addEventListener('click', (event) => {
-//     // function play() {
-//     // var codePilihanComp = JSON.parse(getCookie('codePilihanComp'));
-//     // console.log(codePilihanComp);
-//     // let userId = dataUser.id;
-//     // let win = 0;
-//     // let draw = 0;
-//     // let lose = 0;
-
-//     var z = document.getElementsByName('computerChoice')[hasilPC];
-//     console.log(z);
-
-//     var y = document.getElementsByClassName('pilihan');
-//     // console.log(`Hasil dari getElementsByClassName ${y}`);
-//     console.log(y);
-
-//     var x = document.querySelectorAll('.pilihan');
-//     // console.log(`Hasil dari querySelectorAll ${x}`);
-//     console.log(x);
-
-
-

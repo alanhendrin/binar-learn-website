@@ -1,66 +1,17 @@
-<script src="/js/script-bgk.js"></script>
-<!-- <script src="/js/script.js"></script> -->
+<script type="module" src="/js/script-bgk.js"></script>
+<script src="/js/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
   </script>
 
-<!-- <script>
+<script>
   const dataUser = JSON.parse(getCookie('qw3r7y'));
-  console.log(dataUser);
   const profiles = dataUser.profiles
-  console.log(`Nama Player: ${profiles.firstName}`)
 
   // ganti text player ke nama player setelah berhasil login
   if (dataUser.username != '') {
     document.getElementById('playerName').innerHTML = profiles.firstName
   }
-
-  // save game data (win, draw, lose)
-  // const saveData = document.querySelectorAll('.pilihanPlayer');
-  // saveData.forEach((pp) => {
-  //   pp.addEventListener('click', (event) => {
-  function play() {
-    // var codePilihanComp = JSON.parse(getCookie('codePilihanComp'));
-    // console.log(codePilihanComp);
-    let userId = dataUser.id;
-    let win = 0;
-    let draw = 0;
-    let lose = 0;
-
-    // let z = document.getElementsByClassName('pilihan')[0].id;
-    // console.log(z);
-
-    let y = document.getElementsByClassName('.pilihan');
-    // console.log(`Hasil dari getElementsByClassName ${y}`);
-    console.log(y);
-
-    let x = document.querySelectorAll('pilihan');
-    // console.log(`Hasil dari querySelectorAll ${x}`);
-    console.log(x);
-
-    fetch(
-      '/game-score', {
-        method: 'post',
-        headers: {
-          "content-type": "application/json"
-        },
-        body: JSON.stringify({
-          userId: userId,
-          win: win,
-          draw: draw,
-          lose: lose,
-          typePlayer: profiles.firstName
-        })
-      }
-    ).then((res) => {
-      return res.json()
-    }).then((result) => {
-      console.log(result)
-    }).catch((err) => {
-      console.log(err)
-    })
-  })
-}) -->
 </script>
 </body>
 
